@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <script src="./javascript/funciones.js"></script>
 </head>
 <body>
     <h1>MOKEPON!🔥💧🌴</h1>
@@ -24,17 +24,17 @@
 
     <label > 
         Langostelvis
-        <input type="radio" name="mascota">
+        <input type="radio" name="mascota" id="langostelvis">
     </label>
     
     <label >
         Tucapalma
-        <input type="radio" name="mascota">
+        <input type="radio" name="mascota" id="tucapalma">
     </label>
     
     <label >
         Pydos
-        <input type="radio" name="mascota">
+        <input type="radio" name="mascota" id="pydos">
     </label>
 
     <button id="boton-mascotas">
@@ -42,12 +42,19 @@
     </button>
 </section>
 
+<!-- MASCOTAS -->
+
+<section>
+    <P>
+        Tu Mascota: <span id="mascotaJugador"></span>
+    </P>
+
+</section>
 
 <!-- SECCION DE ATAQUE DE MASCOTA  -->
 <section class="SeleccionarMascota">
     <h2>Seleccionar ataque</h2>
-    <p>tu mascota tiene <span> 3 </span> vidas</p>
-    <p>La mascota enemiga le quedan </span>3</span> vidas</p>
+    
     <p>
         <button id="boton-agua">AGUA💧</button>
         <button id="boton-fuego">FUEGO🔥</button>
@@ -62,6 +69,11 @@
     </div>
 </section>
 
+<!-- VIDA DE TU MASCOTA-->
+<section>
+    <p>tu mascota tiene <span> 3 </span> vidas</p>
+    <p>La mascota enemiga le quedan </span>3</span> vidas</p>
+</section>
 <!-- SECCION DEL BOTON DE REINICIO DEL JUEGO -->
 <section class="Reinicio">
     <button id="boton-reinicio ">Reiniciar</button>
@@ -79,6 +91,6 @@
 
 
 
-<script src="./javascript/funciones.js"></script>
+
 </body>
 </html>

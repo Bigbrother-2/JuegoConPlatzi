@@ -6,6 +6,8 @@
 let ataqueJugador = "" 
 
 let ataqueDeLaPC =""
+
+let resultadoCombate = ""
 //Funcion para cargar el html y luego las funciones
 function cargaHTML(){
         //Esto dice que traiga el boton de mascotas y luego este boton accedemos al escuchador de eventos y cuando se haga un click, cargue la funcion seleccionarMascotaJugador
@@ -96,8 +98,6 @@ function numeroRandom(min, max){
 
 /*ATAQUE DE LOS JUGADORES */
 function ataqueFuegoJugador(){
-    let nombreDelAtaque = document.getElementById("nombreAtaque")
-    nombreDelAtaque.innerHTML ="Fuego"
     
     alert("Has elegido el ataque de Fuego. ")
     ataqueJugador = "Fuego"
@@ -107,18 +107,12 @@ function ataqueFuegoJugador(){
 }
 
 function ataqueAguaJugador(){
-    let nombreDelAtaque = document.getElementById("nombreAtaque")
-    nombreDelAtaque.innerHTML ="Agua"
-    
     alert("Has elegido el ataque de Agua. ")
     ataqueJugador = "Agua"
     
     ataqueAleatorioPC()
 }
-function ataqueTierraJugador(){
-    let nombreDelAtaque = document.getElementById("nombreAtaque")
-    nombreDelAtaque.innerHTML ="Tierra"
-    
+function ataqueTierraJugador(){   
     alert("Has elegido el ataque de Tierra. ")
     ataqueJugador = "Tierra"
 
@@ -129,21 +123,49 @@ function ataqueTierraJugador(){
 
 function ataqueAleatorioPC (){
     let ataqueRandom = numeroRandom(1,3)
-    let spanAtaqueRandom = document.getElementById("ataquePC")
-
     if(ataqueRandom == 1){
-        alert("El enemigo escogio el ataque de Agua")
-        spanAtaqueRandom.innerHTML = "Agua"
+        alert("El enemigo escogio el ataque de Agua") 
         ataqueDeLaPC = "Agua"
     } else if (ataqueRandom == 2){
         alert("El enemigo escogio el ataque de Fuego")
-        spanAtaqueRandom.innerHTML = "Fuego"
         ataqueDeLaPC = "Fuego"
     }else if (ataqueRandom == 3){
         alert("El enemigo escogio el ataque de Tierra")
-        spanAtaqueRandom.innerHTML = "Tierra"
         ataqueDeLaPC = "Tierra"
     }
+    resultado()
+
 }
+
+
+// mensaje de daños
+
+
+
+function mensajeDaños(resultado){
+
+    let agregar = document.getElementById("daños")
+
+    let mensaje = document.createElement("p") //Lo que hacemos aca es crear un nuevo elemento de html y lo guardamos en una variable. 
+    mensaje.innerHTML = "Tu mascota ataco con " + " " + ataqueJugador + " Y la mascota enemiga atacó con " + " " + ataqueDeLaPC + "." + "El resultado de la batalla fue:" + " " + resultado 
+
+    agregar.appendChild(mensaje)
+
+}
+
+function resultado (){
+    if(ataqueJugador == ataqueDeLaPC){
+        resultadoCombate = "Empate"
+    } else if (ataqueJugador == "Fuego" && ataqueDeLaPC == "Tierra" || ataqueJugador == "Agua" && ataqueDeLaPC == "Fuego" ||ataqueJugador == "Tierra" && ataqueDeLaPC == "Agua"){
+        mensajeDaños("Ganaste")
+    } else {
+        mensajeDaños("Perdiste") 
+    }
+   
+}
+
+
+
+
 
 window.addEventListener("load", cargaHTML )
